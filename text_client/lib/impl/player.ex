@@ -27,9 +27,8 @@ defmodule TextClient.Impl.Player do
     # Debug
     # IO.puts(inspect(game))
     # IO.puts(inspect(tally))
-    guess = get_guess()
-    {updated_game, updated_tally} = Hangman.make_move(game, guess)
-    interact({updated_game, updated_tally})
+    Hangman.make_move(game, get_guess)
+    |> interact
   end
 
   defp feedback_for(tally = %{game_state: :initializing}) do
