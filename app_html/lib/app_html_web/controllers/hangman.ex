@@ -1,6 +1,8 @@
 defmodule AppHtmlWeb.HangmanHTML do
-  import Phoenix.HTML.Link
   use AppHtmlWeb, :html
+
+  import Phoenix.HTML.Link
+  import Phoenix.HTML.Form
 
   embed_templates "hangman/*"
 end
