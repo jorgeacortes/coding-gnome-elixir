@@ -18,6 +18,7 @@ defmodule AppHtmlWeb.Router do
     pipe_through :browser
 
     get "/", HangmanController, :index
+    post "/", HangmanController, :new
   end
 
   # Other scopes may use custom stacks.
