@@ -14,10 +14,10 @@ defmodule AppHtmlWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", AppHtmlWeb do
+  scope "/hangman", AppHtmlWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    get "/", HangmanController, :index
   end
 
   # Other scopes may use custom stacks.
