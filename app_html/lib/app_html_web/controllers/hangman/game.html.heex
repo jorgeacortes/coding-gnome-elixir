@@ -19,14 +19,10 @@
       <p>Turns left: <%= @tally.turns_left %></p>
       <p>Letters used: <%= @tally.used |> Enum.join(", ") %></p>
       <p>Word so far: <%= @tally.letters |> Enum.join(" ") %></p>
+      <%= move_status(@tally.game_state) |> raw() %>
     </div>
     <div class="flex mx-auto max-w-xl my-8">
-      <%= form_for(@conn, AppHtmlWeb.Router.Helpers.hangman_path(@conn, :update), [ as: "make_move", method: :put ], fn f -> %>
-        <%= text_input(f, :guess) %>
-        <%= submit("Make the next guess",
-          class: "flex mt-2 mx-auto bg-brand text-white font-semibold p-2"
-        ) %>
-      <% end) %>
+      <%= continue_or_try_again(@conn, @tally.game_state) %>
     </div>
   </div>
 </div>
