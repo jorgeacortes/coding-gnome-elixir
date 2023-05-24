@@ -1,6 +1,6 @@
 <.flash_group flash={@flash} />
 <div class="mx-auto px-4 py-4">
-  <div class="block">
+  <div class="block mx-auto">
     <div class="flex items-center mx-auto max-w-xl">
       <svg viewBox="0 0 71 48" class="h-12" aria-hidden="true">
         <path
@@ -12,6 +12,9 @@
         Hangman
       </h1>
     </div>
+    <pre class="mx-auto">
+      <%= figure_for(@tally.turns_left) %>
+    </pre>
     <div class="flex flex-col mx-auto max-w-xl my-8">
       <p>Turns left: <%= @tally.turns_left %></p>
       <p>Letters used: <%= @tally.used |> Enum.join(", ") %></p>

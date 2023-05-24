@@ -1,5 +1,6 @@
 defmodule AppHtmlWeb.HangmanController do
   use AppHtmlWeb, :controller
+  alias AppHtmlWeb.Router.Helpers, as: Routes
 
   def index(conn, _params) do
     render(conn, :index)
@@ -7,22 +8,28 @@ defmodule AppHtmlWeb.HangmanController do
 
   def new(conn, _params) do
     game = Hangman.new_game()
-    tally = Hangman.tally(game)
 
     conn
     |> put_session(:game, game)
-    |> render("game.html", tally: tally)
+    |> redirect(to: Routes.hangman_path(conn, :show))
   end
 
   def update(conn, params) do
     guess = params["make_move"]["guess"]
 
+    put_in(conn.params["make_move"]["guess"], "")
+    |> get_session(:game)
+    |> Hangman.make_move(guess)
+
+    redirect(conn, to: Routes.hangman_path(conn, :show))
+  end
+
+  def show(conn, _param) do
     tally =
       conn
       |> get_session(:game)
-      |> Hangman.make_move(guess)
+      |> Hangman.tally()
 
-    put_in(conn.params["make_move"]["guess"], "")
-    |> render("game.html", tally: tally)
+    render(conn, "game.html", tally: tally)
   end
 end
