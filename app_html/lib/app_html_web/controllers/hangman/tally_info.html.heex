@@ -1,0 +1,16 @@
+<table class="text-gray-600 text-left text-xl">
+  <tr>
+    <th>Turns left:</th>
+    <td class="text-black font-semibold"><%= @turns_left %></td>
+  </tr>
+
+  <tr>
+    <th>Letters used:</th>
+    <td class="text-black font-semibold"><%= @used |> Enum.join(", ") %></td>
+  </tr>
+
+  <tr>
+    <th>Word so far:</th>
+    <td class="text-black font-semibold"><%= @letters |> Enum.join(" ") %></td>
+  </tr>
+</table>
