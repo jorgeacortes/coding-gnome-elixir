@@ -26,11 +26,11 @@ defmodule AppLiveWeb.Live.Game.WordSoFar do
 
   def render(assigns) do
     ~H"""
-    <div class="w-full py-4">
+    <div class="block w-full py-4">
       <p class={"#{state_class(@tally.game_state)}"}>
         <%= state_name(@tally.game_state) %>
       </p>
-      <div class="py-4">
+      <div class="block py-4">
         <%= for ch <- @tally.letters do %>
           <div class={"px-2 text-2xl font-extrabold inline-block #{if ch != "_", do: "text-green-400"}"}>
             <%= ch %>
