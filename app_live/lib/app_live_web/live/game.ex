@@ -19,8 +19,8 @@ defmodule AppLiveWeb.Live.Game do
 
   def render(assigns) do
     ~H"""
-    <h1>LiveView Hangman</h1>
-    <div class="" phx-window-keyup="make_move">
+    <h1 class="text-4xl text-brand font-bold  mb-4">LiveView Hangman</h1>
+    <div class="w-full mx-4 items-center" phx-window-keyup="make_move">
       <%= live_component(__MODULE__.Figure, tally: assigns.tally, id: 1) %>
       <%= live_component(__MODULE__.Alphabet, tally: assigns.tally, id: 2) %>
       <%= live_component(__MODULE__.WordSoFar, tally: assigns.tally, id: 3) %>
